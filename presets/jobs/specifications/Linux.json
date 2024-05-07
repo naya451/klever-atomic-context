@@ -90,7 +90,7 @@
           "name": "FVTP",
           "options": {
             "merge source files": true,
-            "verifier profile": "reachability with function pointers",
+            "verifier profile": "reachability",
             "verifier": {
               "name": "CPAchecker",
               "version": "smg-master:c6f6a66"
@@ -310,6 +310,12 @@
                   "linux/kernel/locking/rwlock.c",
                   "linux/sleep/common.c"
                 ]}
+              },
+              {
+                "name": "FVTP",
+                "options": {
+                  "verifier profile": "reachability with function pointers"
+                }
               }
             ]
           }]
