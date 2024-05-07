@@ -15,6 +15,6 @@ void ldv_common_sleep(void)
 		/* ASSERT shouldnt sleep in interrupt context*/
 		ldv_assert();
   	if (ldv_is_rw_locked()) 
-      /* ASSERT shouldnt sleep in rwlock*/
-      ldv_assert();
+		/* ASSERT shouldnt sleep in rwlock*/
+		ldv_assert();
 }
