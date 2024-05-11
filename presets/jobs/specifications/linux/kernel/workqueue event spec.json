@@ -44,6 +44,12 @@
             "comment": "Call the work callback.",
             "parameters": [
               "%delayed_work%"
+            ],
+            "post-call": [
+              "ldv_switch_out_context_for_schedule();"
+            ],
+            "pre-call": [
+              "ldv_switch_to_context_for_schedule();"
             ]
           },
           "fail": {
@@ -136,6 +142,12 @@
             "comment": "Call the work callback.",
             "parameters": [
               "%delayed_work%"
+            ],
+            "post-call": [
+              "ldv_switch_out_context_for_schedule();"
+            ],
+            "pre-call": [
+              "ldv_switch_to_context_for_schedule();"
             ]
           },
           "fail": {
@@ -177,6 +189,12 @@
             "comment": "Call the work callback.",
             "parameters": [
               "%delayed_work%"
+            ],
+            "post-call": [
+              "ldv_switch_out_context_for_schedule();"
+            ],
+            "pre-call": [
+              "ldv_switch_to_context_for_schedule();"
             ]
           },
           "fail": {
@@ -218,6 +236,12 @@
             "comment": "Call the work callback.",
             "parameters": [
               "%work_struct%"
+            ],
+            "post-call": [
+              "ldv_switch_out_context_for_schedule();"
+            ],
+            "pre-call": [
+              "ldv_switch_to_context_for_schedule();"
             ]
           },
           "fail": {
@@ -259,6 +283,12 @@
             "comment": "Call the work callback.",
             "parameters": [
               "%work_struct%"
+            ],
+            "post-call": [
+              "ldv_switch_out_context_for_schedule();"
+            ],
+            "pre-call": [
+              "ldv_switch_to_context_for_schedule();"
             ]
           },
           "fail": {
@@ -300,6 +330,12 @@
             "comment": "Call the work callback.",
             "parameters": [
               "%delayed_work%"
+            ],
+            "post-call": [
+              "ldv_switch_out_context_for_schedule();"
+            ],
+            "pre-call": [
+              "ldv_switch_to_context_for_schedule();"
             ]
           },
           "fail": {
