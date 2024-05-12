@@ -4,8 +4,8 @@ extern void ldv_common_sleep(void);
 }
 
 pointcut SLEEP_VOID: call(static inline void __might_sleep(const char *file, int line, int preempt_offset)) ||
-call(void msleep(unsigned int msecs)) ||
-call(void __sched usleep_range(unsigned long min, unsigned long max)) ||
+	call(void msleep(unsigned int msecs)) ||
+	call(void usleep_range(unsigned long min, unsigned long max)) ||
 	call(static inline void do_user_addr_fault(struct pt_regs *regs, long unsigned int hw_error_code, long unsigned int address)) || 
 	call(void mmiotrace_iounmap(void volatile *addr)) || 
 	call(void iosf_mbi_punit_acquire(void)) || 
