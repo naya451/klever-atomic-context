@@ -3,7 +3,10 @@ before: file ("$this")
 extern void ldv_common_sleep(void);
 }
 
-pointcut SLEEP_VOID: call(static inline void do_user_addr_fault(struct pt_regs *regs, long unsigned int hw_error_code, long unsigned int address)) || 
+pointcut SLEEP_VOID: call(static inline void __might_sleep(const char *file, int line, int preempt_offset)) ||
+call(void msleep(unsigned int msecs)) ||
+call(void __sched usleep_range(unsigned long min, unsigned long max)) ||
+	call(static inline void do_user_addr_fault(struct pt_regs *regs, long unsigned int hw_error_code, long unsigned int address)) || 
 	call(void mmiotrace_iounmap(void volatile *addr)) || 
 	call(void iosf_mbi_punit_acquire(void)) || 
 	call(void blkcg_destroy_blkgs(struct blkcg *blkcg)) || 
@@ -829,7 +832,6 @@ pointcut SLEEP_VOID: call(static inline void do_user_addr_fault(struct pt_regs *
 	call(static void i2c_r(struct gspca_dev *gspca_dev, u8 reg, int len)) || 
 	call(static void i2c_w1(struct gspca_dev *gspca_dev, u8 reg, u8 val)) || 
 	call(static void i2c_w8(struct gspca_dev *gspca_dev, u8 const *buffer)) || 
-	call(static void i2c_w_seq(struct gspca_dev *gspca_dev, u8 const (*data)[8U])) || 
 	call(static void mi0360_probe(struct gspca_dev *gspca_dev)) || 
 	call(static void setexposure(struct gspca_dev *gspca_dev)) || 
 	call(static void wait_status_0(struct gspca_dev *gspca_dev)) || 
@@ -853,7 +855,6 @@ pointcut SLEEP_VOID: call(static inline void do_user_addr_fault(struct pt_regs *
 	call(static void setquality(struct gspca_dev *gspca_dev, s32 q)) || 
 	call(static void soi763a_6800_start(struct gspca_dev *gspca_dev)) || 
 	call(static void soi763a_6810_init(struct gspca_dev *gspca_dev)) || 
-	call(static void usb_exchange(struct gspca_dev *gspca_dev, u8 const (*data)[4U])) || 
 	call(static void transfer_update(struct work_struct *work)) || 
 	call(static void hdpvr_disconnect(struct usb_interface *interface)) || 
 	call(static void msi2500_stop_streaming(struct vb2_queue *vq)) || 
@@ -4725,7 +4726,6 @@ pointcut SLEEP_NOT_VOID: 	call(static int pseudo_lock_measure_cycles(struct rdtg
 	call(static int sd_start(struct gspca_dev *gspca_dev)) || 
 	call(static int reg_r_wait(struct gspca_dev *gspca_dev, __u16 reg, __u16 index, __u16 value)) || 
 	call(static int ssi_w(struct gspca_dev *gspca_dev, u16 reg, u16 val)) || 
-	call(static int write_vector(struct gspca_dev *gspca_dev, u16 const (*data)[2U])) || 
 	call(static int i2c_read(struct gspca_dev *gspca_dev, __u16 reg, __u8 mode)) || 
 	call(static int sd_init_72a(struct gspca_dev *gspca_dev)) || 
 	call(static int sd_start_72a(struct gspca_dev *gspca_dev)) || 
@@ -6951,7 +6951,6 @@ pointcut SLEEP_NOT_VOID: 	call(static int pseudo_lock_measure_cycles(struct rdtg
 	call(s32 ixgbe_reset_phy_nl(struct ixgbe_hw *hw)) || 
 	call(s32 ixgbe_acquire_swfw_sync_X540(struct ixgbe_hw *hw, u32 mask)) || 
 	call(static s32 ixgbe_get_swfw_sync_semaphore(struct ixgbe_hw *hw)) || 
-	call(s32 ixgbe_fw_phy_activity(struct ixgbe_hw *hw, u16 activity, u32 (*data)[4U])) || 
 	call(static int ixgbevf_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring)) || 
 	call(int otx2_mbox_wait_for_rsp(struct otx2_mbox *mbox, int devid)) || 
 	call(int rvu_poll_reg(struct rvu *rvu, u64 block, u64 offset, u64 mask, bool zero)) || 
